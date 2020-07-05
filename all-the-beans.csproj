@@ -23,4 +23,9 @@
     </Content>
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\bean_images\" />
+  </ItemGroup>
+
 </Project>
