@@ -1,7 +1,9 @@
 ﻿node_modules/
 
-wwwwroot/bundles/
+wwwwroot/bundles
 
 bin
 
 obj
+
+.vs

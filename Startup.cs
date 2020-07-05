@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using all_the_beans.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using all_the_beans.Services;
+using all_the_beans.Interfaces;
 
 namespace all_the_beans
 {
@@ -44,6 +46,8 @@ namespace all_the_beans
 
             services.AddDbContext<BeanContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IBeanService, BeanService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

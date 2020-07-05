@@ -15,5 +15,7 @@ namespace all_the_beans.Models
         public string Colour { get; set; }
         public DateTime Date { get; set; }
         public string Image { get; set; }
+
+        public Bean() { }
     }
 }
