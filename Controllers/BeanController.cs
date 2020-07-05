@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using all_the_beans.Interfaces;
-using all_the_beans.Models;
+﻿using all_the_beans.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace all_the_beans.Controllers
@@ -22,10 +17,15 @@ namespace all_the_beans.Controllers
             return View();
         }
 
-        public string GetBeanOfDay()
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
+        public JsonResult GetBeanOfDay()
         {
             var bean = _beanService.GetBeanOfDay();
-            return bean.Colour;
+            return Json(bean);
         }
     }
 }

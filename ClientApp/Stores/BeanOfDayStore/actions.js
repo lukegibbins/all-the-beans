@@ -3,8 +3,9 @@
 export default {
     loadBeanOfDay({ commit }) {
         axios.get('/Bean/GetBeanOfDay')
-            .then(data => {
-                commit("setBeanOfDay", data.data)
+            .then(res => {
+                var beanObj = res.data
+                commit("setBeanOfDay", beanObj)
             })
             .catch(error => {
                 console.log(error)
