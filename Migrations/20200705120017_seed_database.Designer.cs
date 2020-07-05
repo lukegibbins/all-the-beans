@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using all_the_beans.Data;
 
 namespace all_the_beans.Migrations
 {
     [DbContext(typeof(BeanContext))]
-    partial class BeanContextModelSnapshot : ModelSnapshot
+    [Migration("20200705120017_seed_database")]
+    partial class seed_database
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,7 +208,7 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a950fac4-1e0d-4619-8cb5-1f83df3062ec"),
+                            Id = new Guid("df1a227b-dcb6-45a3-b67f-91b5871df524"),
                             Aroma = "smells like chocolate",
                             Colour = "black",
                             Cost = 5.9900000000000002,
@@ -215,11 +217,11 @@ namespace all_the_beans.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9611afc6-75a3-4c54-a0c8-1efd6e6b5642"),
-                            Aroma = "smells like flowers",
-                            Colour = "green",
+                            Id = new Guid("54094434-14bb-4295-b8ad-9eb8cc6816e8"),
+                            Aroma = "smells like chocolate",
+                            Colour = "black",
                             Cost = 3.2000000000000002,
-                            Date = new DateTime(2010, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2009, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Image = "http://sample.com"
                         });
                 });
