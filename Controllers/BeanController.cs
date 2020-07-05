@@ -27,5 +27,17 @@ namespace all_the_beans.Controllers
             var bean = _beanService.GetBeanOfDay();
             return Json(bean);
         }
+
+        public JsonResult GetAllBeans()
+        {
+            var beans = _beanService.GetAllBeans();
+            return Json(beans);
+        }
+
+        public JsonResult UpdateAllBeans()
+        {
+            var beans = _beanService.UpdateAllBeans();
+            return Json(beans);
+        }
     }
 }

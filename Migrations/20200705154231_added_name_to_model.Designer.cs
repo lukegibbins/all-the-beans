@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using all_the_beans.Data;
 
 namespace all_the_beans.Migrations
 {
     [DbContext(typeof(BeanContext))]
-    partial class BeanContextModelSnapshot : ModelSnapshot
+    [Migration("20200705154231_added_name_to_model")]
+    partial class added_name_to_model
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,23 +210,21 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cab03eaf-4d4c-430b-a2b1-9b4e5ff476f6"),
+                            Id = new Guid("85bccf51-1aa1-4f3d-916b-f3302f92dcfc"),
                             Aroma = "smells like chocolate",
                             Colour = "black",
                             Cost = 5.9900000000000002,
                             Date = new DateTime(2009, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Image = "http://sample.com",
-                            Name = "Craigy's cocoa bean"
+                            Image = "http://sample.com"
                         },
                         new
                         {
-                            Id = new Guid("ca396eb5-dfd7-45ae-8fb5-44ab3605b9e8"),
+                            Id = new Guid("7575c2b5-ce1e-4f4e-88d1-13b21aef738b"),
                             Aroma = "smells like flowers",
                             Colour = "green",
                             Cost = 3.2000000000000002,
                             Date = new DateTime(2010, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Image = "http://sample.com",
-                            Name = "Columbias finest"
+                            Image = "http://sample.com"
                         });
                 });
 

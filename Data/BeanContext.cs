@@ -17,6 +17,7 @@ namespace all_the_beans.Data
             modelBuilder.Entity<Bean>().HasData(
                 new Bean { 
                     Id = Guid.NewGuid(),
+                    Name = "Craigy's cocoa bean",
                     Cost = 5.99,
                     Aroma = "smells like chocolate",
                     Colour = "black", 
@@ -25,6 +26,7 @@ namespace all_the_beans.Data
                 },
                 new Bean {
                     Id = Guid.NewGuid(),
+                    Name = "Columbias finest",
                     Cost = 3.20,
                     Aroma = "smells like flowers",
                     Colour = "green",

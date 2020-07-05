@@ -10,6 +10,7 @@ namespace all_the_beans.Models
     {
         [Key]
         public Guid Id { get; set; }
+        public string Name { get; set;}
         public double Cost { get; set; }
         public string Aroma { get; set; }
         public string Colour { get; set; }
