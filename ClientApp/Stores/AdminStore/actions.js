@@ -20,6 +20,7 @@ export default {
         })
         .then(res => {
             console.log(res)
+            alert("Beans updated")
             location.reload()
         })
         .catch(error => {

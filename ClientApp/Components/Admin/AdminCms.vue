@@ -109,17 +109,6 @@
                 this.formErrors = []
                 var beanDates = beans.map(value => value.date);
 
-                let hasPastError = false
-                beanDates.forEach(date => {
-                    if (new Date(date) < new Date()) {
-                        hasPastError = true
-                    }
-                })
-
-                if (hasPastError) {
-                    this.formErrors.push(BEAN_ERROR_PAST)
-                }
-
                 if (beanDates.length > [...new Set(beanDates)].length) {
                     this.formErrors.push(BEAN_ERROR_DUPLICATE)
                 }
