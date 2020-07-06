@@ -1,13 +1,20 @@
 ﻿<template>
     <div>
    
-        <add-bean-component v-show="!addNewBean"></add-bean-component>
+        <!--<add-bean-component v-show="!addNewBean"></add-bean-component>-->
 
         <div v-show="!addNewBean">
             <h1>Manage My Beautiful Beans</h1>
             <br /><br />
 
             <button type="button" class="btn btn-info" v-on:click="">Add a new bean</button>
+
+            <div>
+                <br /><br />
+                <p v-for="error in formErrors" class="form-errors">
+                    {{ error }}
+                </p>
+            </div>
 
             <table class="table">
                 <thead>
@@ -28,16 +35,16 @@
                             {{index+1}}
                         </td>
                         <td>
-                            <input type="text" v-model="bean.name" class="form-control">
+                            {{bean.name}}
                         </td>
                         <td>
-                            <input type="text" v-model="bean.cost" class="form-control">
+                            £{{bean.cost}}
                         </td>
                         <td>
-                            <input type="text" v-model="bean.aroma" class="form-control">
+                            {{bean.aroma}}
                         </td>
                         <td>
-                            <input type="text" v-model="bean.colour" class="form-control">
+                            {{bean.colour}}
                         </td>
                         <td>
                             <input type="date" v-model="bean.date" class="form-control">
@@ -51,18 +58,21 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-success" style="float:right">Save all</button>
+            <button type="button" class="btn btn-success" style="float:right" v-on:click="saveAll(beans)">Save all</button>
         </div>
     </div>
 </template>
 
 <script>
     import AddBeanForm from './Components/AddBeanForm.vue'
+    var BEAN_ERROR_PAST = "Bean adverts cannot be displayed in the past. Please amend dates or delete."
+    var BEAN_ERROR_DUPLICATE = "You cannot have to beans advertised on the same day."
 
     export default {
         data() {
             return {
-                addNewBean: false
+                addNewBean: false,
+                formErrors: []
             }
         },
 
@@ -74,7 +84,6 @@
             beans() {
                 let beans = this.$store.getters["getAllBeans"]
                 beans.forEach(bean => bean.date = bean.date.split('T')[0])
-                beans.forEach(bean => bean.cost = "£" + bean.cost)
                 return beans
             }
         },
@@ -94,13 +103,39 @@
 
             viewImage(bean) {
                 alert("Launch image with modal")
+            },
+
+            saveAll(beans) {
+                this.formErrors = []
+                var beanDates = beans.map(value => value.date);
+
+                let hasPastError = false
+                beanDates.forEach(date => {
+                    if (new Date(date) < new Date()) {
+                        hasPastError = true
+                    }
+                })
+
+                if (hasPastError) {
+                    this.formErrors.push(BEAN_ERROR_PAST)
+                }
+
+                if (beanDates.length > [...new Set(beanDates)].length) {
+                    this.formErrors.push(BEAN_ERROR_DUPLICATE)
+                }
+
+                this.formErrors = [...new Set(this.formErrors)]
+
+                if (this.formErrors.length > 0) { return }
+
+                this.$store.dispatch("saveAll")
             }
         }
     }
 </script>
 
 <style>
-    btn-position {
-        float: right
+    .form-errors {
+        color:red
     }
 </style>

@@ -10,5 +10,20 @@ export default {
             .catch(error => {
                 console.log(error)
             })
+    },
+
+    saveAll({ state }) {
+        axios.post('/Bean/UpdateAllBeans', state.beans, {
+            headers: {
+                'Content-Type': 'application/json', 
+            }
+        })
+        .then(res => {
+            console.log(res)
+            location.reload()
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 }

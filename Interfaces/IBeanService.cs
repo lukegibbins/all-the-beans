@@ -10,6 +10,6 @@ namespace all_the_beans.Interfaces
     {
         Bean GetBeanOfDay();
         List<Bean> GetAllBeans();
-        List<Bean> UpdateAllBeans();
+        List<Bean> UpdateAllBeans(List<Bean> beans);
     }
 }

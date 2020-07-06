@@ -1,5 +1,8 @@
 ﻿using all_the_beans.Interfaces;
+using all_the_beans.Models;
+using all_the_beans.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace all_the_beans.Controllers
 {
@@ -34,10 +37,37 @@ namespace all_the_beans.Controllers
             return Json(beans);
         }
 
-        public JsonResult UpdateAllBeans()
+        [HttpPost]
+        public IActionResult UpdateAllBeans([FromBody] List<BeanVM> beans)
         {
-            var beans = _beanService.UpdateAllBeans();
-            return Json(beans);
+            if (beans == null) { return BadRequest(); }
+
+            var domainModelBeans = ExtractBeansToModel(beans);
+
+            _beanService.UpdateAllBeans(domainModelBeans);              
+
+            return Ok();
+        }
+
+        // Would've used automapper here providing 
+        // I had the time to go through the docs
+        private List<Bean> ExtractBeansToModel(List<BeanVM> beans)
+        {
+            var beanModelList = new List<Bean>();
+            foreach (var bean in beans)
+            {
+                beanModelList.Add(new Bean()
+                {
+                    Id = bean.id,
+                    Aroma = bean.aroma,
+                    Colour = bean.colour,
+                    Cost = bean.cost,
+                    Date = bean.date,
+                    Image = bean.image,
+                    Name = bean.name
+                });
+            }
+            return beanModelList;
         }
     }
 }
