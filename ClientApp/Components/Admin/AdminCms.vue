@@ -1,7 +1,7 @@
 ﻿<template>
     <div>
    
-        <!--<add-bean-component v-show="!addNewBean"></add-bean-component>-->
+        <add-bean-component v-show="!addNewBean"></add-bean-component>
 
         <div v-show="!addNewBean">
             <h1>Manage My Beautiful Beans</h1>
@@ -106,7 +106,9 @@
             },
 
             saveAll(beans) {
+                if (beans.length == 0) { return  }
                 this.formErrors = []
+
                 var beanDates = beans.map(value => value.date);
 
                 if (beanDates.length > [...new Set(beanDates)].length) {

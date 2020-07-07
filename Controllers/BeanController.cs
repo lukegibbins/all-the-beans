@@ -1,18 +1,26 @@
 ﻿using all_the_beans.Interfaces;
 using all_the_beans.Models;
 using all_the_beans.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace all_the_beans.Controllers
 {
     public class BeanController : Controller
     {
         private readonly IBeanService _beanService;
+        private readonly IHostingEnvironment _appEnvironment;
 
-        public BeanController(IBeanService beanService)
+
+        public BeanController(IBeanService beanService, IHostingEnvironment appEnvironment)
         {
             _beanService = beanService;
+            _appEnvironment = appEnvironment;
         }
 
         public IActionResult Index()
@@ -44,7 +52,35 @@ namespace all_the_beans.Controllers
 
             var domainModelBeans = ExtractBeansToModel(beans);
 
-            _beanService.UpdateAllBeans(domainModelBeans);              
+            _beanService.UpdateAllBeans(domainModelBeans);
+
+            return Ok();
+        }
+
+
+        [HttpPost]
+        public IActionResult AddBean([FromBody] BeanVM bean)
+        {
+            if (bean == null) { return BadRequest(); }
+
+            var x = bean;
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddImage(IFormFile file)
+        {
+            if (file == null) { return BadRequest(); }
+
+            var upload = Path.Combine(_appEnvironment.WebRootPath, "bean_images");
+
+            var filePath = Path.Combine(upload, file.FileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
 
             return Ok();
         }

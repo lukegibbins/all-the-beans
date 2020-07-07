@@ -10,10 +10,10 @@
         <br /><br />
 
         <label>Select image:</label>
-        <input type="file" class="form-control-file" accept="image/*" onchange="loadFile(event)">
+        <input type="file" class="form-control-file" accept="image/*" ref="file" v-on:change="handleFileUpload($event)">
         <img id="output" width="200" />
 
-        <button type="button" class="btn btn-info" v-on:click="">Add Bean</button>
+        <button type="button" class="btn btn-info" v-on:click="submitForm()">Add Bean</button>
         <br /><br />
     </div>
 </template>
@@ -25,25 +25,33 @@
         data() {
             return {
                 bean: {
-                    name: "",
-                    cost: "",
-                    aroma: "",
-                    colour: "",
-                    date: "",
-                    image: "",
-                }
+                    aroma: "smelly",
+                    colour: "red",
+                    cost: 3.99,
+                    date: "2020-02-05",
+                    id: "4dede0e3-c631-412b-be66-0e6baad39217",
+                    image: "test",
+                    name: "tset"
+                },
+                file: ''
             }
         },
 
         methods: {
-            addBean(bean) {
-
+            handleFileUpload(event) {
+                this.file = event.target.files[0]
             },
 
-            loadFile(event) {
-                var image = document.getElementById('output');
-                image.src = URL.createObjectURL(event.target.files[0]);
+            submitForm() {
+                let formData = new FormData()
+                let timestamp = Math.round((new Date()).getTime() / 1000).toString()
+
+                this.bean.image = timestamp
+                console.log({ bean: this.bean })
+
+                formData.set('file', this.file, "image_" + timestamp)
+                this.$store.dispatch('addBean', [formData, this.bean])
             }
         }
     }
- </script>
+</script>

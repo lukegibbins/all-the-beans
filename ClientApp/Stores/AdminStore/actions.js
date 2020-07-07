@@ -12,19 +12,42 @@ export default {
             })
     },
 
+    addBean(context, [file, bean]) {
+        axios.post('/Bean/AddImage', file, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }})
+            .then(res => {
+                console.log(res)
+                console.log("bean =>", bean)
+                axios.post('/Bean/AddBean', bean, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }})
+                    .then(res => {
+                        console.log(res)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },
+
     saveAll({ state }) {
+        alert(state.beans)
         axios.post('/Bean/UpdateAllBeans', state.beans, {
             headers: {
-                'Content-Type': 'application/json', 
-            }
-        })
-        .then(res => {
-            console.log(res)
-            alert("Beans updated")
-            location.reload()
-        })
-        .catch(error => {
-            console.log(error)
-        })
+                'Content-Type': 'application/json',
+            }})
+            .then(res => {
+                console.log(res)
+                alert("Beans updated")
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
