@@ -5,7 +5,7 @@ namespace all_the_beans.ViewModels
 {
     public class BeanVM
     {  
-        public Guid id { get; set; }
+        public Guid? id { get; set; }
         public string name { get; set; }
         public double cost { get; set; }
         public string aroma { get; set; }

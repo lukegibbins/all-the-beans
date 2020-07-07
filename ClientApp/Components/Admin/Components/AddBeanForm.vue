@@ -25,13 +25,13 @@
         data() {
             return {
                 bean: {
-                    aroma: "smelly",
-                    colour: "red",
-                    cost: 3.99,
-                    date: "2020-02-05",
-                    id: "4dede0e3-c631-412b-be66-0e6baad39217",
-                    image: "test",
-                    name: "tset"
+                    aroma: "",
+                    colour: "",
+                    cost: 3.99,             // has to be double format
+                    date: "2020-02-05",     // has to be format => 2020-02-05
+                    id: null,
+                    image: "",
+                    name: ""
                 },
                 file: ''
             }
@@ -47,7 +47,6 @@
                 let timestamp = Math.round((new Date()).getTime() / 1000).toString()
 
                 this.bean.image = timestamp
-                console.log({ bean: this.bean })
 
                 formData.set('file', this.file, "image_" + timestamp)
                 this.$store.dispatch('addBean', [formData, this.bean])

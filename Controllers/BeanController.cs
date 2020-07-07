@@ -92,9 +92,10 @@ namespace all_the_beans.Controllers
             var beanModelList = new List<Bean>();
             foreach (var bean in beans)
             {
+                var guid = bean.id == null ? Guid.Empty : bean.id;
                 beanModelList.Add(new Bean()
                 {
-                    Id = bean.id,
+                    Id = guid.GetValueOrDefault(),
                     Aroma = bean.aroma,
                     Colour = bean.colour,
                     Cost = bean.cost,
