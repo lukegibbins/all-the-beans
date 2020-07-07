@@ -15,6 +15,17 @@ namespace all_the_beans.Services
             _context = context;
         }
 
+        public bool AddBean(Bean bean)
+        {
+            int prevCount = GetAllBeans().Count();
+
+            _context.Beans.Add(bean);
+
+            _context.SaveChanges();
+
+            return GetAllBeans().Count() > prevCount ? true : false;
+        }
+
         public List<Bean> GetAllBeans()
         {
             return _context.Beans.ToList();

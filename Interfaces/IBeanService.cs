@@ -1,8 +1,5 @@
 ﻿using all_the_beans.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace all_the_beans.Interfaces
 {
@@ -11,5 +8,6 @@ namespace all_the_beans.Interfaces
         Bean GetBeanOfDay();
         List<Bean> GetAllBeans();
         List<Bean> UpdateAllBeans(List<Bean> beans);
+        bool AddBean(Bean bean);
     }
 }

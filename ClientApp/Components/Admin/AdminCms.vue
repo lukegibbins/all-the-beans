@@ -4,6 +4,7 @@
         <add-bean-component v-show="!addNewBean"></add-bean-component>
 
         <div v-show="!addNewBean">
+            <br /><br />
             <h1>Manage My Beautiful Beans</h1>
             <br /><br />
 

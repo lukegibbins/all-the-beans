@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace all_the_beans.Controllers
@@ -63,7 +64,9 @@ namespace all_the_beans.Controllers
         {
             if (bean == null) { return BadRequest(); }
 
-            var x = bean;
+            var mappedSingleBean = ExtractBeansToModel(new List<BeanVM>() { bean }).SingleOrDefault(); // hack hack hack. Ran out of time :'(
+
+            _beanService.AddBean(mappedSingleBean);
 
             return Ok();
         }
@@ -86,7 +89,7 @@ namespace all_the_beans.Controllers
         }
 
         // Would've used automapper here providing 
-        // I had the time to go through the docs
+        // I had the time to go through the docs; hack hack hack
         private List<Bean> ExtractBeansToModel(List<BeanVM> beans)
         {
             var beanModelList = new List<Bean>();

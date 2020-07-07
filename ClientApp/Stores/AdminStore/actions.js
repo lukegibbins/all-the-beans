@@ -26,6 +26,7 @@ export default {
                     }})
                     .then(res => {
                         console.log(res)
+                        alert("1 beautiful bean added successfully :)")
                     })
                     .catch(error => {
                         console.log(error)
