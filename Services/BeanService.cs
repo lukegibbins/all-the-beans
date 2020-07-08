@@ -1,6 +1,8 @@
 ﻿using all_the_beans.Data;
 using all_the_beans.Interfaces;
 using all_the_beans.Models;
+using all_the_beans.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,11 +17,13 @@ namespace all_the_beans.Services
             _context = context;
         }
 
-        public bool AddBean(Bean bean)
+        public bool AddBean(BeanVM bean)
         {
             int prevCount = GetAllBeans().Count();
 
-            _context.Beans.Add(bean);
+            var mappedBean = ExtractBeansToModel(new List<BeanVM>() { bean }).SingleOrDefault(); 
+
+            _context.Beans.Add(mappedBean);
 
             _context.SaveChanges();
 
@@ -37,30 +41,57 @@ namespace all_the_beans.Services
             return bean;
         }
 
-        public List<Bean> UpdateAllBeans(List<Bean> beans)
+        public List<Bean> UpdateAllBeans(List<BeanVM> beans)
         {
-            var beansFromDb = _context.Beans.Select(x => x.Id).ToList();
-            var differenceInIds = beansFromDb.Except(beans.Select(x => x.Id).ToList()).ToList();
+            var mappedBeans = ExtractBeansToModel(beans);
+
+            var beansFromDb_Ids = GetAllBeans().Select(b => b.Id);
+
+            var differenceInIds = beansFromDb_Ids.Except(mappedBeans.Select(b => b.Id));
 
             if (differenceInIds.Any())
             {
-                foreach(var beanId in beansFromDb)
+                foreach (var beanId in differenceInIds)
                 {
-                    var bean = _context.Beans.ToList().Where(x => x.Id == beanId).SingleOrDefault();
-                    _context.Beans.Remove(bean);
+                    var beanToRemove = _context.Beans.SingleOrDefault(b => b.Id == beanId);
+                    _context.Beans.Remove(beanToRemove);
                 }
                 _context.SaveChanges();
             }
 
             var beansToUpdate = _context.Beans.ToList();
+
             foreach(var bean in beansToUpdate)
             {
-                var beanInVM = beans.Where(x => x.Id == bean.Id).SingleOrDefault();
-                bean.Date = beanInVM.Date;
+                var beanFromVM = mappedBeans.SingleOrDefault(b => b.Id == bean.Id);
+                bean.Date = beanFromVM.Date;
             }
             _context.SaveChanges();
 
             return _context.Beans.ToList();
+        }
+
+
+        // Would've used automapper here providing 
+        // I had the time to go through the docs; hack hack hack
+        private List<Bean> ExtractBeansToModel(List<BeanVM> beans)
+        {
+            var beanModelList = new List<Bean>();
+            foreach (var bean in beans)
+            {
+                var guid = bean.id == null ? Guid.Empty : bean.id;
+                beanModelList.Add(new Bean()
+                {
+                    Id = guid.GetValueOrDefault(),
+                    Aroma = bean.aroma,
+                    Colour = bean.colour,
+                    Cost = bean.cost,
+                    Date = bean.date,
+                    Image = bean.image,
+                    Name = bean.name
+                });
+            }
+            return beanModelList;
         }
     }
 }

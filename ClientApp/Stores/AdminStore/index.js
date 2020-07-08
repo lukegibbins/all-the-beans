@@ -5,7 +5,9 @@ import actions from './actions'
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Vuelidate from 'vuelidate'
 
+Vue.use(Vuelidate)
 Vue.use(Vuex)
 
 const store = new Vuex.Store({

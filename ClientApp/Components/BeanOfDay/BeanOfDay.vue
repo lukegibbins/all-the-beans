@@ -1,24 +1,53 @@
 ﻿<template>
     <div>
-        <h1>Bean of day</h1>
-        <p>Lets all bean together</p>
-
-        <p>My bean is called: {{bean}}</p>
+        <br /><br />
+        <h1>Bean of the day</h1>
+        <p><i>Lets all bean together</i></p>
+        <br />
+        <div class="card mb-3" style="border: black solid 1px">
+            <h3 class="card-header">{{today}}</h3>
+            <div class="card-body">
+                <h5 class="card-title">Today's bean is: <b>{{bean.name}}</b></h5>
+                <h6 class="card-subtitle text-muted">We hope you enjoy</h6>
+            </div>
+            <img style="height: 200px; width: 100%; display: block;" :src="getImageUrl(bean.image)">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Bean name: {{bean.name}}</li>
+                <li class="list-group-item">Bean cost (per 100g): £{{bean.cost}}</li>
+                <li class="list-group-item">Bean aroma: {{bean.aroma}}</li>
+                <li class="list-group-item">Bean date: {{formatDate()}}</li>
+                <li class="list-group-item">Bean colour: {{bean.colour}}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from "vuex"
-
     export default {
         computed: {
-            ...mapGetters({
-                bean: "getBeanOfDay"
-            })
+            bean() {
+                let bean = this.$store.getters["getBeanOfDay"]
+                return bean
+            }
         },
 
         created() {
             this.$store.dispatch("loadBeanOfDay")
+        },
+
+        methods: {
+            getImageUrl(url) {
+                return "https://localhost:44335/bean_images/" + url
+            },
+
+            formatDate() {
+                return this.bean.date == undefined ? null : this.getFormat(this.bean.date.split('T')[0])
+            },
+
+            getFormat(date) {
+                var arr = date.split('-')
+                return arr[2]+"/"+arr[1]+"/"+arr[0]
+            }
         }
     }
 </script>

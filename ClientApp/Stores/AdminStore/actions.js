@@ -38,14 +38,17 @@ export default {
     },
 
     saveAll({ state }) {
-        alert(state.beans)
         axios.post('/Bean/UpdateAllBeans', state.beans, {
             headers: {
                 'Content-Type': 'application/json',
             }})
             .then(res => {
-                console.log(res)
-                alert("Beans updated")
+                console.log("res =>", res)
+                if (res.status == 200) {
+                    alert("Beans updated")
+                } else {
+                    alert("Error updating beans")
+                }
             })
             .catch(error => {
                 console.log(error)

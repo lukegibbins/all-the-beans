@@ -1,14 +1,14 @@
 ﻿<template>
     <div>
    
-        <add-bean-component v-show="!addNewBean"></add-bean-component>
+        <add-bean-component v-show="addNewBean" :beans="beans"></add-bean-component>
 
         <div v-show="!addNewBean">
             <br /><br />
             <h1>Manage My Beautiful Beans</h1>
             <br /><br />
 
-            <button type="button" class="btn btn-info" v-on:click="">Add a new bean</button>
+            <button type="button" class="btn btn-info" v-on:click="addBean()">Add a new bean</button>
 
             <div>
                 <br /><br />
@@ -51,7 +51,7 @@
                             <input type="date" v-model="bean.date" class="form-control">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-dark" v-on:click="viewImage(bean)">View</button>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal" v-on:click="viewImage(bean)">View</button>
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger" v-on:click="deleteBean(index)">Delete</button>
@@ -60,14 +60,36 @@
                 </tbody>
             </table>
             <button type="button" class="btn btn-success" style="float:right" v-on:click="saveAll(beans)">Save all</button>
+
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 </template>
 
 <script>
     import AddBeanForm from './Components/AddBeanForm.vue'
-    var BEAN_ERROR_PAST = "Bean adverts cannot be displayed in the past. Please amend dates or delete."
-    var BEAN_ERROR_DUPLICATE = "You cannot have to beans advertised on the same day."
 
     export default {
         data() {
@@ -107,13 +129,12 @@
             },
 
             saveAll(beans) {
-                if (beans.length == 0) { return  }
                 this.formErrors = []
 
                 var beanDates = beans.map(value => value.date);
 
                 if (beanDates.length > [...new Set(beanDates)].length) {
-                    this.formErrors.push(BEAN_ERROR_DUPLICATE)
+                    this.formErrors.push("There is already a bean advertised on that date. Choose another.")
                 }
 
                 this.formErrors = [...new Set(this.formErrors)]
@@ -130,4 +151,6 @@
     .form-errors {
         color:red
     }
+
+
 </style>
