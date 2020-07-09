@@ -1,24 +1,34 @@
 ﻿<template>
     <div>
         <br /><br />
-        <h1>Bean of the day</h1>
-        <p><i>Lets all bean together</i></p>
-        <br />
-        <div class="card mb-3" style="border: black solid 1px">
-            <h3 class="card-header">{{today}}</h3>
-            <div class="card-body">
-                <h5 class="card-title">Today's bean is: <b>{{bean.name}}</b></h5>
-                <h6 class="card-subtitle text-muted">We hope you enjoy</h6>
+        <div v-if="!bean">
+            <div class="jumbotron">
+                <h1 class="display-3">No beans today :'(</h1>
+                <p class="lead">Unfortunately, there are no bean adverts being displayed today. </p>
+                <p>Please try checking again tomrrow.</p>
             </div>
-            <img style="height: 200px; width: 100%; display: block;" :src="getImageUrl(bean.image)">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Bean name: {{bean.name}}</li>
-                <li class="list-group-item">Bean cost (per 100g): £{{bean.cost}}</li>
-                <li class="list-group-item">Bean aroma: {{bean.aroma}}</li>
-                <li class="list-group-item">Bean date: {{formatDate()}}</li>
-                <li class="list-group-item">Bean colour: {{bean.colour}}</li>
-            </ul>
         </div>
+        <div v-else="bean">
+            <h1>Bean of the day</h1>
+            <p><i>Lets all bean together</i></p>
+            <br />
+            <div class="card mb-3" style="border: black solid 1px">
+                <h3 class="card-header">{{formatDate()}}</h3>
+                <div class="card-body">
+                    <h5 class="card-title">Today's bean advert is: <b>{{bean.name}}</b></h5>
+                    <h6 class="card-subtitle text-muted">We hope you enjoy</h6>
+                </div>
+                <img style="height: 200px; width: 100%; display: block;" :src="getImageUrl(bean.image)">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Bean name: {{bean.name}}</li>
+                    <li class="list-group-item">Bean cost (per 100g): £{{bean.cost}}</li>
+                    <li class="list-group-item">Bean aroma: {{bean.aroma}}</li>
+                    <li class="list-group-item">Bean date: {{formatDate()}}</li>
+                    <li class="list-group-item">Bean colour: {{bean.colour}}</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -26,12 +36,12 @@
     export default {
         computed: {
             bean() {
-                let bean = this.$store.getters["getBeanOfDay"]
+                let bean = this.$store.getters["getBeanOfDay"]                
                 return bean
             }
         },
 
-        created() {
+        mounted() {
             this.$store.dispatch("loadBeanOfDay")
         },
 

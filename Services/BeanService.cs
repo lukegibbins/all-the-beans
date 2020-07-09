@@ -37,8 +37,9 @@ namespace all_the_beans.Services
 
         public Bean GetBeanOfDay()
         {
-            var bean = GetAllBeans().FirstOrDefault();
-            return bean;
+            DateTime today = DateTime.Today;
+            var todaysBean = _context.Beans.SingleOrDefault(b => b.Date.Equals(today));
+            return todaysBean;
         }
 
         public List<Bean> UpdateAllBeans(List<BeanVM> beans)

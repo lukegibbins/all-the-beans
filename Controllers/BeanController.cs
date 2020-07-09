@@ -1,5 +1,6 @@
 ﻿using all_the_beans.Interfaces;
 using all_the_beans.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,7 @@ namespace all_the_beans.Controllers
             return View();
         }
 
+       //[Authorize(Roles = "Admin")]
         public IActionResult Admin()
         {
             return View();

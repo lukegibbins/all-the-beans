@@ -19,14 +19,22 @@ export default {
             }})
             .then(res => {
                 console.log(res)
-                console.log("bean =>", bean)
+
+                if (res.status !== 200) {
+                    alert("Error adding bean")
+                    return
+                }
                 axios.post('/Bean/AddBean', bean, {
                     headers: {
                         'Content-Type': 'application/json',
                     }})
                     .then(res => {
                         console.log(res)
-                        alert("1 beautiful bean added successfully :)")
+                        if (res.status == 200) {
+                            alert("1 beautiful bean added successfully :)")
+                        } else {
+                            alert("Error adding bean")
+                        }
                     })
                     .catch(error => {
                         console.log(error)
