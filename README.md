@@ -5,7 +5,7 @@ clone project
 cd into project
 
 open up powershell in the projects directory.
-   Run command: 'npm run watch' and wait for the files to stop bundling
+   Run command: 'npm run build' and wait for the files to stop bundling
    
 open up the .sln file in Visual Studio
 
