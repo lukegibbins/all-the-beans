@@ -12,14 +12,14 @@
             <h1>Bean of the day</h1>
             <p><i>Lets all bean together</i></p>
             <br />
-            <div class="card mb-3" style="border: black solid 1px">
+            <div class="card mb-3 custom-style" style="border: black solid 1px">
                 <h3 class="card-header">{{formatDate()}}</h3>
                 <div class="card-body">
                     <h5 class="card-title">Today's bean advert is: <b>{{bean.name}}</b></h5>
                     <h6 class="card-subtitle text-muted">We hope you enjoy</h6>
                 </div>
                 <img :src="getImageUrl(bean.image)">
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" style="color:black">
                     <li class="list-group-item">Bean name: {{bean.name}}</li>
                     <li class="list-group-item">Bean cost (per 100g): £{{bean.cost}}</li>
                     <li class="list-group-item">Bean aroma: {{bean.aroma}}</li>
@@ -64,5 +64,8 @@
 </script>
 
 <style>
-
+    .custom-style {
+        background-color: #1a1a1a;
+        color:white        
+    }
 </style>

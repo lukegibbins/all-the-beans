@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using all_the_beans.Data;
 
 namespace all_the_beans.Migrations
 {
     [DbContext(typeof(BeanContext))]
-    partial class BeanContextModelSnapshot : ModelSnapshot
+    [Migration("20200709195658_seed-database-beans")]
+    partial class seeddatabasebeans
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

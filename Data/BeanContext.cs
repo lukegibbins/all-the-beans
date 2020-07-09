@@ -84,7 +84,7 @@ namespace all_the_beans.Data
                     Name = "Robusta",
                     Cost = 9.99,
                     Aroma = "Medicinal",
-                    Colour = "green",
+                    Colour = "Very dark",
                     Image = "1594313817_def.jpg",
                     Date = new DateTime(2020, 7, 14)
                 }
