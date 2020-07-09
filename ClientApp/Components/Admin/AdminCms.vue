@@ -26,7 +26,7 @@
                         <th scope="col">Aroma</th>
                         <th scope="col">Colour</th>
                         <th scope="col">Date Advertised</th>
-                        <th scope="col">Image</th>
+                        <th scope="col">Image thumbnail</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -51,7 +51,7 @@
                             <input type="date" v-model="bean.date" class="form-control">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal" v-on:click="viewImage(bean)">View</button>
+                            <img :src="getImageUrl(bean.image)" class="rounded img-thumbnail" style="width:150px; height:150px; border: black solid 1px">
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger" v-on:click="deleteBean(index)">Delete</button>
@@ -60,29 +60,6 @@
                 </tbody>
             </table>
             <button type="button" class="btn btn-success" style="float:right" v-on:click="saveAll(beans)">Save all</button>
-
-
-            <div class="modal" id="myModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Modal body text goes here.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
 
         </div>
     </div>
@@ -124,10 +101,6 @@
                 this.beans.splice(beanIndex, 1)
             },
 
-            viewImage(bean) {
-                alert("Launch image with modal")
-            },
-
             saveAll(beans) {
                 this.formErrors = []
 
@@ -137,12 +110,16 @@
                     this.formErrors.push("There is already a bean advertised on that date. Choose another.")
                 }
 
-                this.formErrors = [...new Set(this.formErrors)]
-
                 if (this.formErrors.length > 0) { return }
 
                 this.$store.dispatch("saveAll")
-            }
+            },
+
+            getImageUrl(url) {
+                let arr = window.location.href.split("/")
+                let domainUrl = arr[0] + "//" + arr[2] + "/bean_images/" + url
+                return domainUrl
+            },
         }
     }
 </script>
