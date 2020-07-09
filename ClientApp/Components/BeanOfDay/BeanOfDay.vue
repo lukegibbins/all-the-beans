@@ -39,7 +39,7 @@
             }
         },
 
-        created() {
+        mounted() {
             this.$store.dispatch("loadBeanOfDay")
         },
 

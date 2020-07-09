@@ -90,7 +90,7 @@
             }
         },
 
-        created() {
+        mounted() {
             this.$store.dispatch("loadAllBeans")
         },
 
