@@ -18,7 +18,7 @@
                     <h5 class="card-title">Today's bean advert is: <b>{{bean.name}}</b></h5>
                     <h6 class="card-subtitle text-muted">We hope you enjoy</h6>
                 </div>
-                <img style="height: 200px; width: 100%; display: block;" :src="getImageUrl(bean.image)">
+                <img style="height: 350px; width: 100%; display: block;" :src="getImageUrl(bean.image)">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Bean name: {{bean.name}}</li>
                     <li class="list-group-item">Bean cost (per 100g): £{{bean.cost}}</li>
@@ -47,7 +47,9 @@
 
         methods: {
             getImageUrl(url) {
-                return "https://localhost:44335/bean_images/" + url
+                let arr = window.location.href.split("/")
+                let domainUrl = arr[0] + "//" + arr[2] + "/bean_images/" + url
+                return domainUrl
             },
 
             formatDate() {

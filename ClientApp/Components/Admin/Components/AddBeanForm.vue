@@ -47,6 +47,7 @@
 
         <br /><br />
         <label>Upload image</label>
+        <p><small><i>*Wider images are more suited for our bean adverts.</i></small></p>
         <input type="file" class="form-control-file" accept="image/*" ref="file" v-on:change="handleFileUpload($event)">
         <div class="validation-error" v-if="$v.file.$error">Required</div>
 
