@@ -20,13 +20,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
+                        <th scope="col">No.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Aroma</th>
                         <th scope="col">Colour</th>
                         <th scope="col">Date Advertised</th>
-                        <th scope="col">Image</th>
+                        <th scope="col">Image (click)</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -52,7 +52,7 @@
                         </td>
                         <td>
                             <a :href="getImageUrl(bean.image)">
-                                <img :src="getImageUrl(bean.image)" class="rounded img-thumbnail" style="width:150px; height:150px; border: black solid 1px">
+                                <img :src="getImageUrl(bean.image)" class="rounded img-thumbnail" style="width:130px; height:130px; border: black solid 1px">
                             </a>
                         </td>
                         <td>
