@@ -50,7 +50,7 @@ namespace all_the_beans.Controllers
         {
             if (beans == null) { return BadRequest(); }
 
-            if (beans.Any(x => x == null)) { return BadRequest(); }
+            if (beans.Any(x => x.date == null)) { return BadRequest(); }
 
             _beanService.UpdateAllBeans(beans);
 

@@ -38,7 +38,9 @@ namespace all_the_beans.Services
         public Bean GetBeanOfDay()
         {
             DateTime today = DateTime.Today;
+
             var todaysBean = _context.Beans.SingleOrDefault(b => b.Date.Equals(today));
+
             return todaysBean;
         }
 
@@ -73,8 +75,7 @@ namespace all_the_beans.Services
         }
 
 
-        // Would've used automapper here providing 
-        // I had the time to go through the docs; hack hack hack
+        // Would've used automapper here...
         private List<Bean> ExtractBeansToModel(List<BeanVM> beans)
         {
             var beanModelList = new List<Bean>();

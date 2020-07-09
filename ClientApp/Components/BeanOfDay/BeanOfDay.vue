@@ -8,7 +8,7 @@
                 <p>Please try checking again tomrrow.</p>
             </div>
         </div>
-        <div v-else="bean">
+        <div v-else>
             <h1>Bean of the day</h1>
             <p><i>Lets all bean together</i></p>
             <br />
@@ -28,7 +28,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -36,8 +35,7 @@
     export default {
         computed: {
             bean() {
-                let bean = this.$store.getters["getBeanOfDay"]                
-                return bean
+                return this.$store.getters["getBeanOfDay"]                
             }
         },
 
@@ -53,12 +51,13 @@
             },
 
             formatDate() {
-                return this.bean.date == undefined ? null : this.getFormat(this.bean.date.split('T')[0])
-            },
-
-            getFormat(date) {
-                var arr = date.split('-')
-                return arr[2]+"/"+arr[1]+"/"+arr[0]
+                if (this.bean.date == undefined) {
+                    return null
+                } else {
+                    var dateOnly = this.bean.date.split('T')[0]
+                    var dateParts = dateOnly.split('-')
+                    return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0]
+                }
             }
         }
     }

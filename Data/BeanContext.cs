@@ -37,21 +37,27 @@ namespace all_the_beans.Data
             #region SEED USERS
             var adminGUID = Guid.NewGuid().ToString();
             var userGUID = Guid.NewGuid().ToString();
+            var hasher = new PasswordHasher<IdentityUser>();
 
             modelBuilder.Entity<IdentityUser>().HasData(
                 new IdentityUser
                 {
                     Id = adminGUID,
                     UserName = "admin",
+                    NormalizedUserName = "admin",
                     Email = "admin@admin.com",
-                    PasswordHash = "admin"
+                    NormalizedEmail = "admin@admin.com",
+                    PasswordHash = hasher.HashPassword(null, "admin"),
+                    SecurityStamp = string.Empty
                 },
                 new IdentityUser
                 {
                     Id = userGUID,
                     UserName = "user",
+                    NormalizedUserName = "user",
                     Email = "user@user.com",
-                    PasswordHash = "user"
+                    NormalizedEmail = "user@user.com",
+                    PasswordHash = hasher.HashPassword(null, "user"),
                 });
             #endregion
 
@@ -74,22 +80,22 @@ namespace all_the_beans.Data
                 new Bean
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Craigy's cocoa bean",
+                    Name = "Arabica",
                     Cost = 5.99,
-                    Aroma = "smells like chocolate",
-                    Colour = "black",
-                    Image = "http://sample.com",
-                    Date = new DateTime(2009, 5, 19)
+                    Aroma = "Smoky",
+                    Colour = "Dark",
+                    Image = "1594313819_def.jpg",
+                    Date = new DateTime(2020, 7, 13)
                 },
                 new Bean
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Columbias finest",
-                    Cost = 3.20,
-                    Aroma = "smells like flowers",
+                    Name = "Robusta",
+                    Cost = 9.99,
+                    Aroma = "Medicinal",
                     Colour = "green",
-                    Image = "http://sample.com",
-                    Date = new DateTime(2010, 5, 19)
+                    Image = "1594313817_def.jpg",
+                    Date = new DateTime(2020, 7, 14)
                 }
             );
             #endregion

@@ -52,7 +52,7 @@
                         </td>
                         <td>
                             <a :href="getImageUrl(bean.image)">
-                                <img :src="getImageUrl(bean.image)" class="rounded img-thumbnail" style="width:130px; height:130px; border: black solid 1px">
+                                <img :src="getImageUrl(bean.image)" class="img-thumbnail" style="width:130px; height:130px; border: black solid 1px">
                             </a>
                         </td>
                         <td>
@@ -117,7 +117,7 @@
                 this.$store.dispatch("saveAll")
             },
 
-            getImageUrl(url) {
+            getImageUrl(url) {      
                 let arr = window.location.href.split("/")
                 let domainUrl = arr[0] + "//" + arr[2] + "/bean_images/" + url
                 return domainUrl

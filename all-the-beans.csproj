@@ -8,9 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\bean_images\Controllers\**" />
     <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\bean_images\Controllers\**" />
     <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\bean_images\Controllers\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\bean_images\Controllers\**" />
     <None Remove="wwwroot\NewFolder\**" />
   </ItemGroup>
 

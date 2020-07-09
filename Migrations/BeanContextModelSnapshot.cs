@@ -45,15 +45,15 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "36393a68-aa1c-4c25-8f87-3b581fa4480a",
-                            ConcurrencyStamp = "7d997d08-edd9-431e-8acf-9c941f1b9d47",
+                            Id = "0c4d91b4-f625-42b2-8e20-c1c16b30e8c4",
+                            ConcurrencyStamp = "ce822efa-82f7-439b-ae99-de7389cdb516",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d16938ed-5451-474f-b076-f2f4329544ab",
-                            ConcurrencyStamp = "dfd09878-f16f-4624-a456-3d13726f5af0",
+                            Id = "18e71363-2bf5-43c5-8a53-e35d6b2169e8",
+                            ConcurrencyStamp = "e4a8b8e2-05f0-4bde-9db8-aecc04222373",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -132,26 +132,31 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3d651cdb-d104-4f88-b94b-c22cebf1548c",
+                            Id = "91b6b79b-a407-43b4-919f-bdf334859d51",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c90b7cf-7614-48ea-acac-8dcc81ea5c98",
+                            ConcurrencyStamp = "5e11beb6-edd0-4f38-89ba-d93bc6f15f01",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "admin",
+                            NormalizedEmail = "admin@admin.com",
+                            NormalizedUserName = "admin",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGhd4/89biozxTL6kJnEdgypFFDHzYjkiXegs8IIZPOReuhwU4WDgMOD+BfYbBJflA==",
                             PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
                         new
                         {
-                            Id = "c239bcaa-1f8b-448e-a450-f3794358c94e",
+                            Id = "88f67aa5-0cac-4b61-acb5-f22017ab13f5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bc476ca3-9206-4c19-872a-c214ef429b4a",
+                            ConcurrencyStamp = "d1729ad5-26bf-4d8b-82ec-1e96cab481fe",
                             Email = "user@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "user",
+                            NormalizedEmail = "user@user.com",
+                            NormalizedUserName = "user",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMc3CN8yaHIZwc1qsAGmjBmUeuxn3HkYE1FzRnNL08LM5GjGdrhpd4JkXgvb0+sWBQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "user"
@@ -213,13 +218,13 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "3d651cdb-d104-4f88-b94b-c22cebf1548c",
-                            RoleId = "36393a68-aa1c-4c25-8f87-3b581fa4480a"
+                            UserId = "91b6b79b-a407-43b4-919f-bdf334859d51",
+                            RoleId = "0c4d91b4-f625-42b2-8e20-c1c16b30e8c4"
                         },
                         new
                         {
-                            UserId = "c239bcaa-1f8b-448e-a450-f3794358c94e",
-                            RoleId = "d16938ed-5451-474f-b076-f2f4329544ab"
+                            UserId = "88f67aa5-0cac-4b61-acb5-f22017ab13f5",
+                            RoleId = "18e71363-2bf5-43c5-8a53-e35d6b2169e8"
                         });
                 });
 
@@ -264,23 +269,23 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("59bda3dc-e9b1-42f2-b97c-855befd70699"),
-                            Aroma = "smells like chocolate",
-                            Colour = "black",
+                            Id = new Guid("9dd52b5f-3ba2-4db7-9cfc-336b3667668c"),
+                            Aroma = "Smoky",
+                            Colour = "Dark",
                             Cost = 5.9900000000000002,
-                            Date = new DateTime(2009, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Image = "http://sample.com",
-                            Name = "Craigy's cocoa bean"
+                            Date = new DateTime(2020, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "1594313819_def.jpg",
+                            Name = "Arabica"
                         },
                         new
                         {
-                            Id = new Guid("ce00d69c-3bf8-4586-a021-2616a958a745"),
-                            Aroma = "smells like flowers",
+                            Id = new Guid("d69d7a97-f716-49b1-9aa2-eb742a064720"),
+                            Aroma = "Medicinal",
                             Colour = "green",
-                            Cost = 3.2000000000000002,
-                            Date = new DateTime(2010, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Image = "http://sample.com",
-                            Name = "Columbias finest"
+                            Cost = 9.9900000000000002,
+                            Date = new DateTime(2020, 7, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "1594313817_def.jpg",
+                            Name = "Robusta"
                         });
                 });
 

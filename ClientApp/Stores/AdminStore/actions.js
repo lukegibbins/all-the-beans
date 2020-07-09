@@ -19,7 +19,6 @@ export default {
             }})
             .then(res => {
                 console.log(res)
-
                 if (res.status !== 200) {
                     alert("Error adding bean")
                     return
@@ -31,7 +30,8 @@ export default {
                     .then(res => {
                         console.log(res)
                         if (res.status == 200) {
-                            alert("1 beautiful bean added successfully :)")
+                            alert("1 beautiful bean added successfully")
+                            location.reload()
                         } else {
                             alert("Error adding bean")
                         }
@@ -52,8 +52,8 @@ export default {
             }})
             .then(res => {
                 console.log("res =>", res)
-                if (res.status == 200) {
-                    alert("Beans updated")
+                if (res.status == 200) {                    
+                    alert("Beans updated successfully")
                 } else {
                     alert("Error updating beans")
                 }

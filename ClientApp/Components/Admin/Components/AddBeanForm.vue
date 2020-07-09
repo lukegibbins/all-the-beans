@@ -1,9 +1,9 @@
 ﻿<template>
     <div>
         <br /><br />
-
         <h1>Add A Beautiful Bean</h1>
         <br /><br />
+
         <button class="btn btn-info" v-on:click="back()">Back</button>
         <div>
             <br /><br />
@@ -11,6 +11,7 @@
                 {{ error }}
             </p>
         </div>
+
         <label>Enter name</label>
         <input type="text" class="form-control" placeholder="Name" v-model.trim="$v.bean.name.$model">
         <div class="validation-error" v-if="$v.bean.name.$error">Required</div>
@@ -111,18 +112,19 @@
               
             submitForm() {                
                 this.formErrors = []
+
                 this.$v.$touch()
                 if (this.$v.$invalid) { return }
-
-                let validExtensions = ["jpg", "png", "jpeg"]
-                let hasValidFilExtension = validExtensions.indexOf(this.file.name.split('.').pop().toLowerCase())
-
+     
                 let currentBeanDates = this.beans.map(value => value.date)
 
                 if (currentBeanDates.indexOf(this.bean.date) !== -1) {
                     this.formErrors.push("There is already a bean advertised on that date. Choose another.")
                     return
                 }
+
+                let validExtensions = ["jpg", "png", "jpeg"]
+                let hasValidFilExtension = validExtensions.indexOf(this.file.name.split('.').pop().toLowerCase())
 
                 if (hasValidFilExtension == -1) {
                     this.formErrors.push("Invalid file extension. Use jpg, png or jpeg.")
