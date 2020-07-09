@@ -27,7 +27,7 @@ namespace all_the_beans.Controllers
             return View();
         }
 
-       //[Authorize(Roles = "Admin")]
+        [Authorize(Roles="Admin")]
         public IActionResult Admin()
         {
             return View();

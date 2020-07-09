@@ -16,63 +16,54 @@ namespace all_the_beans.Data
             modelBuilder.Entity<Bean>().ToTable("Bean");
 
             #region SEED ROLES
-            var adminRoleGUID = Guid.NewGuid().ToString();
-            var userRoleGUID = Guid.NewGuid().ToString();
-
+            var adminRoleId = Guid.NewGuid().ToString();
             modelBuilder.Entity<IdentityRole>().HasData(
                 new IdentityRole
                 {
-                    Id = adminRoleGUID,
+                    Id = adminRoleId,
                     Name = "Admin",
-                    NormalizedName = "Admin".ToUpper()
-                },
-                new IdentityRole
-                {
-                    Id = userRoleGUID,
-                    Name = "User",
-                    NormalizedName = "User".ToUpper()
+                    ConcurrencyStamp = "72115431-db0a-4474-bf9d-667f4adf8e25",
+                    NormalizedName = "Admin".ToUpper()                    
                 });
             #endregion
 
             #region SEED USERS
-            var adminGUID = Guid.NewGuid().ToString();
-            var userGUID = Guid.NewGuid().ToString();
+
             var hasher = new PasswordHasher<IdentityUser>();
+            var adminId = Guid.NewGuid().ToString();
+            var userId = Guid.NewGuid().ToString();
 
             modelBuilder.Entity<IdentityUser>().HasData(
                 new IdentityUser
                 {
-                    Id = adminGUID,
-                    UserName = "admin",
-                    NormalizedUserName = "admin",
+                    Id = adminId,
+                    UserName = "admin@admin.com",
+                    NormalizedUserName = "admin@admin.com".ToUpper(),
                     Email = "admin@admin.com",
-                    NormalizedEmail = "admin@admin.com",
-                    PasswordHash = hasher.HashPassword(null, "admin"),
-                    SecurityStamp = string.Empty
+                    NormalizedEmail = "admin@admin.com".ToUpper(),
+                    PasswordHash = hasher.HashPassword(null, "Tombola1!"),
+                    SecurityStamp = Guid.NewGuid().ToString("D")
                 },
                 new IdentityUser
                 {
-                    Id = userGUID,
-                    UserName = "user",
-                    NormalizedUserName = "user",
+                    Id = userId,
+                    UserName = "user@user.com",
+                    NormalizedUserName = "user@user.com".ToUpper(),
                     Email = "user@user.com",
-                    NormalizedEmail = "user@user.com",
-                    PasswordHash = hasher.HashPassword(null, "user"),
+                    NormalizedEmail = "user@user.com".ToUpper(),
+                    PasswordHash = hasher.HashPassword(null, "Tombola1!"),
+                    SecurityStamp = Guid.NewGuid().ToString("D")
                 });
             #endregion
+
 
             #region SEED USER ROLES
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>
                 {
-                    RoleId = adminRoleGUID,
-                    UserId = adminGUID
-                },
-                 new IdentityUserRole<string>
-                 {
-                     RoleId = userRoleGUID,
-                     UserId = userGUID
-                 });
+                    RoleId = adminRoleId,
+                    UserId = adminId
+                });
             #endregion
 
             #region SEED BEANS

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using all_the_beans.Data;
 
 namespace all_the_beans.Migrations
 {
     [DbContext(typeof(BeanContext))]
-    partial class BeanContextModelSnapshot : ModelSnapshot
+    [Migration("20200709175222_seed-database-with-identity")]
+    partial class seeddatabasewithidentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,10 +47,17 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8177d045-4bb0-4d05-81cc-215661ff1af6",
-                            ConcurrencyStamp = "72115431-db0a-4474-bf9d-667f4adf8e25",
+                            Id = "289dc8e0-6545-476d-9938-f8a91a5b4c06",
+                            ConcurrencyStamp = "3bf0caca-56b8-4cb9-9e70-f9d9d6743fdc",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "d2cdd69e-8570-40b5-b9e7-66311f4ff58b",
+                            ConcurrencyStamp = "72386aba-08b0-4def-af4c-fcb5be9f1e35",
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 
@@ -125,33 +134,31 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fe0c3868-b71e-4129-bd2f-e8a6178165ac",
+                            Id = "c063670f-98da-4a2c-ad75-4afc3368a5e8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4dc40078-6a6b-4cb5-a042-08cb30318236",
+                            ConcurrencyStamp = "b856493f-a3f7-4974-b539-aea8f6f15303",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEtM5XQpYXa4lcxTUTHN+YiLuDX7CZ6AF9esSQdPAU4HK+Sz8uRqNKWjdK6/HP006Q==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKUpJAmks9KlW5ipgtIe3s9uFC7a6c7Zx3P2ggEBWxy2sPgT2N8gvlyhMIMucELahg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e809d707-b7ec-43a3-b232-b5781f852c56",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
                         new
                         {
-                            Id = "36db4065-8e1f-442f-bdf1-b03a592296c1",
+                            Id = "3fdfcb9b-d459-4e0b-9cdb-e98d63177b3e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ccd5e50e-ca0e-45f9-b9b1-bb33dcf34034",
+                            ConcurrencyStamp = "8f0d2f14-c710-4221-ae2c-eeefdbc82473",
                             Email = "user@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
-                            NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDiHx7Nfmkddz3dIK86+Diw1+mhG8LPf/ypbvp/VhBfGZ4emXpGA1//2Yw8qFoj30g==",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMFzcJsi+mqCtGrY38HJrSlmuNJySVS5Ea6dkBWxiU8idNaJiM4kzTiW7ojgiA6jsw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5e7cb259-8d37-4f0f-b0ec-79af484df05e",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });
@@ -212,8 +219,13 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "fe0c3868-b71e-4129-bd2f-e8a6178165ac",
-                            RoleId = "8177d045-4bb0-4d05-81cc-215661ff1af6"
+                            UserId = "c063670f-98da-4a2c-ad75-4afc3368a5e8",
+                            RoleId = "289dc8e0-6545-476d-9938-f8a91a5b4c06"
+                        },
+                        new
+                        {
+                            UserId = "3fdfcb9b-d459-4e0b-9cdb-e98d63177b3e",
+                            RoleId = "d2cdd69e-8570-40b5-b9e7-66311f4ff58b"
                         });
                 });
 
@@ -258,7 +270,7 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9a25f824-c812-4566-b77e-5fbfbfa451bd"),
+                            Id = new Guid("a1ca9024-387a-44e6-9b75-bbe2364b72da"),
                             Aroma = "Smoky",
                             Colour = "Dark",
                             Cost = 5.9900000000000002,
@@ -268,7 +280,7 @@ namespace all_the_beans.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f1adf04d-45ed-4706-913d-e1b8b4a52641"),
+                            Id = new Guid("c3f1e87a-cb2d-43e7-80b3-d7801b9b7d87"),
                             Aroma = "Medicinal",
                             Colour = "green",
                             Cost = 9.9900000000000002,

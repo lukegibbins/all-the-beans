@@ -40,9 +40,11 @@ namespace all_the_beans
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()                   // this guy!!
                 .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<BeanContext>();
 
             services.AddDbContext<BeanContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

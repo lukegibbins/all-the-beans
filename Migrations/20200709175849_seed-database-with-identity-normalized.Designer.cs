@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using all_the_beans.Data;
 
 namespace all_the_beans.Migrations
 {
     [DbContext(typeof(BeanContext))]
-    partial class BeanContextModelSnapshot : ModelSnapshot
+    [Migration("20200709175849_seed-database-with-identity-normalized")]
+    partial class seeddatabasewithidentitynormalized
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,10 +47,17 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8177d045-4bb0-4d05-81cc-215661ff1af6",
-                            ConcurrencyStamp = "72115431-db0a-4474-bf9d-667f4adf8e25",
+                            Id = "c6ede810-d9dd-4a2f-9d4d-1efdf5cfdf30",
+                            ConcurrencyStamp = "088bfb1c-94ae-4e5a-a4c0-e1333e239f32",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "46a1a034-a048-4daa-b71f-385b358e71b0",
+                            ConcurrencyStamp = "f453848e-3862-43c8-8215-8bb3fe9fbeb2",
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 
@@ -125,33 +134,33 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fe0c3868-b71e-4129-bd2f-e8a6178165ac",
+                            Id = "82588896-0acf-401c-953f-69ac4910a587",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4dc40078-6a6b-4cb5-a042-08cb30318236",
+                            ConcurrencyStamp = "3ef99be4-059a-488c-9dff-d1dfbbfb1a1f",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEtM5XQpYXa4lcxTUTHN+YiLuDX7CZ6AF9esSQdPAU4HK+Sz8uRqNKWjdK6/HP006Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENyLvXdvZCrUQvK9fxoLVKmFnutoAShzIFlS4JG64wk2PQPemACV3D74EG82Mk/TJg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e809d707-b7ec-43a3-b232-b5781f852c56",
+                            SecurityStamp = "9267c7a6-0534-46db-88b1-c393ea4a7f20",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
                         new
                         {
-                            Id = "36db4065-8e1f-442f-bdf1-b03a592296c1",
+                            Id = "97f62380-cb4a-4038-b7d0-e92592906228",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ccd5e50e-ca0e-45f9-b9b1-bb33dcf34034",
+                            ConcurrencyStamp = "cd7a4b07-639e-4ceb-b29a-06618327454d",
                             Email = "user@user.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDiHx7Nfmkddz3dIK86+Diw1+mhG8LPf/ypbvp/VhBfGZ4emXpGA1//2Yw8qFoj30g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBxX4yDA8M2SXmeDpwUx2aTD0SrqryT7oFvkqPCmxBGTSRePb1IIZCoziutiDW9Efg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5e7cb259-8d37-4f0f-b0ec-79af484df05e",
+                            SecurityStamp = "11ba9ac8-94b9-4263-84dc-1f01965eb798",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });
@@ -212,8 +221,13 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "fe0c3868-b71e-4129-bd2f-e8a6178165ac",
-                            RoleId = "8177d045-4bb0-4d05-81cc-215661ff1af6"
+                            UserId = "82588896-0acf-401c-953f-69ac4910a587",
+                            RoleId = "c6ede810-d9dd-4a2f-9d4d-1efdf5cfdf30"
+                        },
+                        new
+                        {
+                            UserId = "97f62380-cb4a-4038-b7d0-e92592906228",
+                            RoleId = "46a1a034-a048-4daa-b71f-385b358e71b0"
                         });
                 });
 
@@ -258,7 +272,7 @@ namespace all_the_beans.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9a25f824-c812-4566-b77e-5fbfbfa451bd"),
+                            Id = new Guid("327747b2-96d0-42d0-a54a-921b2dd04871"),
                             Aroma = "Smoky",
                             Colour = "Dark",
                             Cost = 5.9900000000000002,
@@ -268,7 +282,7 @@ namespace all_the_beans.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f1adf04d-45ed-4706-913d-e1b8b4a52641"),
+                            Id = new Guid("60834e24-3dd7-4fbb-8f61-d6555ce1e1df"),
                             Aroma = "Medicinal",
                             Colour = "green",
                             Cost = 9.9900000000000002,

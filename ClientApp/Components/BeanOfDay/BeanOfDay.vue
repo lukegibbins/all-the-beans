@@ -18,7 +18,7 @@
                     <h5 class="card-title">Today's bean advert is: <b>{{bean.name}}</b></h5>
                     <h6 class="card-subtitle text-muted">We hope you enjoy</h6>
                 </div>
-                <img style="height: 350px; width: 100%; display: block;" :src="getImageUrl(bean.image)">
+                <img :src="getImageUrl(bean.image)">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Bean name: {{bean.name}}</li>
                     <li class="list-group-item">Bean cost (per 100g): £{{bean.cost}}</li>
