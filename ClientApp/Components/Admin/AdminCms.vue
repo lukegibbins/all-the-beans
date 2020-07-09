@@ -26,7 +26,7 @@
                         <th scope="col">Aroma</th>
                         <th scope="col">Colour</th>
                         <th scope="col">Date Advertised</th>
-                        <th scope="col">Image thumbnail</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -51,7 +51,9 @@
                             <input type="date" v-model="bean.date" class="form-control">
                         </td>
                         <td>
-                            <img :src="getImageUrl(bean.image)" class="rounded img-thumbnail" style="width:150px; height:150px; border: black solid 1px">
+                            <a :href="getImageUrl(bean.image)">
+                                <img :src="getImageUrl(bean.image)" class="rounded img-thumbnail" style="width:150px; height:150px; border: black solid 1px">
+                            </a>
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger" v-on:click="deleteBean(index)">Delete</button>
