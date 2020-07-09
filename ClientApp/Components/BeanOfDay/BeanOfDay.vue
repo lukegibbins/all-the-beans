@@ -1,14 +1,7 @@
 ﻿<template>
     <div>
         <br /><br />
-        <div v-if="!bean">
-            <div class="jumbotron">
-                <h1 class="display-3">No beans today :'(</h1>
-                <p class="lead">Unfortunately, there are no bean adverts being displayed today. </p>
-                <p>Please try checking again tomrrow.</p>
-            </div>
-        </div>
-        <div v-else>
+        <div v-if="bean" v-cloak>
             <h1>Bean of the day</h1>
             <p><i>Lets all bean together</i></p>
             <br />
@@ -26,6 +19,13 @@
                     <li class="list-group-item">Bean date: {{formatDate()}}</li>
                     <li class="list-group-item">Bean colour: {{bean.colour}}</li>
                 </ul>
+            </div>
+        </div>
+        <div v-else v-cloak>
+            <div class="jumbotron">
+                <h1 class="display-3">No beans today :'(</h1>
+                <p class="lead">Unfortunately, there are no bean adverts being displayed today. </p>
+                <p>Please try checking again tomrrow.</p>
             </div>
         </div>
     </div>
@@ -64,6 +64,10 @@
 </script>
 
 <style>
+    [v-cloak] {
+        display:none
+    }
+
     .custom-style {
         background-color: #1a1a1a;
         color:white        
