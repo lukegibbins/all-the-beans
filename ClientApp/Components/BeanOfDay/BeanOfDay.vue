@@ -26,7 +26,7 @@
             <div class="jumbotron">
                 <h1 class="display-3">No beans today :'(</h1>
                 <p class="lead">Unfortunately, there are no bean adverts being displayed today. </p>
-                <p>Please try checking again tomrrow.</p>
+                <p>Please try checking again tomorrow.</p>
             </div>
         </div>
     </div>
