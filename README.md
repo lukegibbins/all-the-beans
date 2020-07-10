@@ -1,5 +1,11 @@
-# all-the-beans // <TargetFramework>netcoreapp2.2</TargetFramework>
+# all-the-beans 
 
+Required software
+---------------------
+node
+Visual Studio 2019
+.NET core version 2.2
+---------------------
 
 clone project
 
