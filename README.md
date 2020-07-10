@@ -1,4 +1,5 @@
-# all-the-beans
+# all-the-beans // <TargetFramework>netcoreapp2.2</TargetFramework>
+
 
 clone project
 
