@@ -1,11 +1,7 @@
 # all-the-beans 
 
-Required software
----------------------
-node
-Visual Studio 2019
-.NET core version 2.2
----------------------
+
+Required software: node, Visual Studio 2019, .NET core version 2.2
 
 clone project
 
