@@ -8,7 +8,7 @@ open up powershell in the project's directory
 
 run command 'npm install' to install dependencies
 
-run command: 'npm run build' to bundle the frontend files
+run command: 'npm run build' or 'npm run watch' (developmet) to bundle the frontend files
    
 open up the .sln file in Visual Studio
 
