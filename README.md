@@ -4,11 +4,11 @@ clone project
 
 cd into project
 
-open up powershell in the projects directory
+open up powershell in the project's directory
 
-Run command 'npm install' to install dependencies
+run command 'npm install' to install dependencies
 
-Run command: 'npm run build' and wait for the files to stop bundling
+run command: 'npm run build' to bundle the frontend files
    
 open up the .sln file in Visual Studio
 
