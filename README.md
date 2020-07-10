@@ -15,7 +15,7 @@ run command: 'npm run build' or 'npm run watch' (development) to bundle the fron
    
 open up the .sln file in Visual Studio
 
-go to Tools >> NuGet package manager >> package manager console >> run the following commands in the console to seed the datase:
+go to Tools >> NuGet package manager >> package manager console >> run the following commands in the console to seed the database:
 
 - add-migration seed-database -Context BeanContext
 - update-database -Context BeanContext
